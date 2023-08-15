@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account</title>
+    <!-- tailwind cdn link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="grid h-[100vh] items-center">
+        <!-- container -->
+        <div class="w-[74%] mx-auto space-y-6">
+          <h1 class="text-center text-5xl font-semibold mb-11">
+            Let's get some
+            <span class="font-extrabold text-green-600">Moooooooooney</span>
+          </h1>
+      <div class="grid grid-cols-3 gap-6 mx-auto justify-center">
+        <div
+          class="bg-emerald-400 rounded-lg text-center space-y-6 p-4 text-white text-3xl">
+          <h2 class="mb-1 font-bold text-2xl text-gray-200">Deposite</h2>
+          $<span>05</span>
+        </div>
+        <div
+          class="bg-red-400 rounded-lg text-center space-y-6 p-4 text-white text-3xl">
+          <h2 class="mb-1 font-bold text-2xl text-gray-200">Widthdraw</h2>
+          $<span>10</span>
+        </div>
+        <div
+          class="bg-sky-400 rounded-lg text-center space-y-6 p-4 text-white text-3xl">
+          <h2 class="mb-1 font-bold text-2xl text-gray-200">Balance</h2>
+          $<span>1235</span>
+        </div>
+      </div>
+      <!-- 2 columns -->
+      <div class="grid grid-cols-2 gap-6 mx-auto justify-center">
+        <div
+          class="bg-indigo-400 rounded-lg text-center space-y-6 p-8 text-white text-3xl">
+          <h2 class="mb-1 font-bold text-4xl text-gray-200">Deposite</h2>
+          <input
+          type="number"
+          name=""
+          id="deposite"
+          class="block text-black text-[18px] px-2  w-[70%] mx-auto rounded-lg placeholder-gray-500" 
+          placeholder="Enter your password"
+      
+        />
+        
+          <div class="">
+            <button
+              id="submit"
+              class="bg-indigo-700 justify-end hover:bg-indigo-800 text-[16px] px-11 py-1 text-white rounded-lg">
+              submit
+            </button>
+          </div>
+        </div>
+        <div
+        class="bg-indigo-400 rounded-lg text-center space-y-6 p-4 text-white text-3xl">
+        <h2 class="mb-1 font-bold text-4xl text-gray-200">widthdraw</h2>
+        <input
+          itemid=""
+          type="number"
+          name=""
+          id="withdraw"
+          class="block text-[18px] px-2 text-black  w-[70%] mx-auto rounded-lg" 
+          placeholder = "Widthdraw now"
+          />
+
+        <div class="">
+          <button
+            id="submit"
+            class="bg-indigo-700 justify-end hover:bg-indigo-800 text-[16px] px-11 py-1 text-white rounded-lg">
+            submit
+          </button>
+        </div>
+      </div> 
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== js file ============== -->
+    <script>
+      const depositeInput = document.getElementById('deposite')
+      const withdraw = document.getElementById('withdraw')
+
+      console.log(depositeInput, withdraw)
+    </script>
+  </body>
+</html>
