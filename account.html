@@ -18,17 +18,17 @@
         <div
           class="bg-emerald-400 rounded-lg text-center space-y-6 p-4 text-white text-3xl">
           <h2 class="mb-1 font-bold text-2xl text-gray-200">Deposite</h2>
-          $<span>05</span>
+          $<span id="depositeTotal">05</span>
         </div>
         <div
           class="bg-red-400 rounded-lg text-center space-y-6 p-4 text-white text-3xl">
           <h2 class="mb-1 font-bold text-2xl text-gray-200">Widthdraw</h2>
-          $<span>10</span>
+          $<span id="withdrawTotal">10</span>
         </div>
         <div
           class="bg-sky-400 rounded-lg text-center space-y-6 p-4 text-white text-3xl">
           <h2 class="mb-1 font-bold text-2xl text-gray-200">Balance</h2>
-          $<span>1235</span>
+          $<span id="balance">1235</span>
         </div>
       </div>
       <!-- 2 columns -->
@@ -40,14 +40,14 @@
           type="number"
           name=""
           id="deposite"
-          class="block text-black text-[18px] px-2  w-[70%] mx-auto rounded-lg placeholder-gray-500" 
+          class="block text-black text-[18px] outline-none px-2  w-[70%] mx-auto rounded-lg placeholder-gray-500" 
           placeholder="Enter your password"
       
         />
         
           <div class="">
             <button
-              id="submit"
+              id="depositeButton"
               class="bg-indigo-700 justify-end hover:bg-indigo-800 text-[16px] px-11 py-1 text-white rounded-lg">
               submit
             </button>
@@ -61,13 +61,13 @@
           type="number"
           name=""
           id="withdraw"
-          class="block text-[18px] px-2 text-black  w-[70%] mx-auto rounded-lg" 
+          class="block text-[18px] px-2 text-black outline-none  w-[70%] mx-auto rounded-lg" 
           placeholder = "Widthdraw now"
           />
 
         <div class="">
           <button
-            id="submit"
+            id="widthdrawButton"
             class="bg-indigo-700 justify-end hover:bg-indigo-800 text-[16px] px-11 py-1 text-white rounded-lg">
             submit
           </button>
@@ -79,10 +79,66 @@
 
     <!-- ============== js file ============== -->
     <script>
+      const deposition = document.getElementById('depositeTotal')
+      const withdrawal = document.getElementById('withdrawTotal')
+      
+      // total withdrawal & deposition
+      let existedDeposite = parseFloat(deposition.innerText)
+      let existedWithdraw = parseFloat(withdrawal.innerText)
+      
+      // Balance amount
+      let balance = document.getElementById('balance')
+      let balanceAmount = parseFloat(balance.innerText);
+      
+      // input field
       const depositeInput = document.getElementById('deposite')
-      const withdraw = document.getElementById('withdraw')
+      const withdrawInput = document.getElementById('withdraw')
+      
+      // withdraw and deposite button
+      const depositeButton = document.getElementById('depositeButton')
+      const widthdrawButton = document.getElementById('widthdrawButton')
 
-      console.log(depositeInput, withdraw)
-    </script>
+      // auto focus
+      depositeInput.focus()
+  // Add event handler
+depositeButton.addEventListener('click', function() {
+  const depositeAmount = parseFloat(depositeInput.value);
+
+  // Check if the input field is empty
+  if (isNaN(depositeAmount)) {
+    alert('Please enter a valid deposit amount.');
+    return; // Exit the function early
+  }
+
+  existedDeposite += depositeAmount; 
+  deposition.innerText = existedDeposite; // Update the displayed total
+
+  balanceAmount += depositeAmount
+  balance.innerText = balanceAmount
+
+  depositeInput.value = ''
+  depositeInput.focus();
+});
+
+widthdrawButton.addEventListener('click', function() {
+  const widthdrawInputValue = parseFloat(withdrawInput.value);
+
+  // Check if the input field is empty or not a valid number
+  if (isNaN(widthdrawInputValue) || widthdrawInputValue === "") {
+    alert('Please enter a valid withdrawal amount.');
+    return; // Exit the function early
+  }
+
+  existedWithdraw += widthdrawInputValue
+  totalWithdrawal = existedWithdraw
+
+  withdrawal.innerText = totalWithdrawal
+  currentBalance = Math.abs(totalWithdrawal - balanceAmount)
+  balance.innerText = currentBalance
+
+  withdrawInput.value = ''
+  withdrawInput.focus();
+});
+      </script>
   </body>
-</html>
+  </html>
